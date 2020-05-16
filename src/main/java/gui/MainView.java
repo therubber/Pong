@@ -10,11 +10,11 @@ import java.awt.event.ActionListener;
  * GUI that the program boots into
  * Contains main menu buttons for navigation
  */
-public class Main extends JFrame {
+public class MainView extends JFrame {
 
     private final transient TerminalController controller;
 
-    public Main(TerminalController controller) {
+    public MainView(TerminalController controller) {
         this.controller = controller;
 
         setLayout(new GridLayout(4, 1));
@@ -24,6 +24,7 @@ public class Main extends JFrame {
         add(guestListButton);
 
         JButton addGuestsButton = new JButton("Add Guests");
+        addGuestsButton.addActionListener(new AddGuestListener(this));
         add(addGuestsButton);
 
         JButton markPaidButton = new JButton("Mark guests as paid");
@@ -32,6 +33,8 @@ public class Main extends JFrame {
         JButton tournamentButton = new JButton("Tournament");
         add(tournamentButton);
 
+
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500, 500);
         setVisible(true);
     }
@@ -41,16 +44,30 @@ public class Main extends JFrame {
      */
     private class GuestListListener implements ActionListener {
 
-        private final Main main;
+        private final MainView mainView;
 
-        public GuestListListener(Main main) {
-            this.main = main;
+        public GuestListListener(MainView mainView) {
+            this.mainView = mainView;
         }
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            controller.guestListViewer.setVisible(true);
-            main.setVisible(false);
+            controller.guestListView.setVisible(true);
+            mainView.setVisible(false);
+        }
+    }
+
+    private class AddGuestListener implements ActionListener {
+
+        private final MainView mainView;
+
+        public AddGuestListener(MainView mainView) {
+            this.mainView = mainView;
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            controller.addGuestView.setVisible(true);
+            mainView.setVisible(false);
         }
     }
 }

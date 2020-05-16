@@ -1,8 +1,9 @@
 package controller;
 
 import entities.Guest;
-import gui.GuestListViewer;
-import gui.Main;
+import gui.AddGuestView;
+import gui.GuestListView;
+import gui.MainView;
 import repos.GuestList;
 
 import java.util.Scanner;
@@ -10,15 +11,17 @@ import java.util.Scanner;
 public class TerminalController {
 
     private final GuestList guestList;
-    public final Main mainViewer;
-    public final GuestListViewer guestListViewer;
+    public final MainView mainView;
+    public final GuestListView guestListView;
+    public final AddGuestView addGuestView;
     Scanner scanner = new Scanner(System.in);
     String command = "menu";
 
     public TerminalController() {
         this.guestList = new GuestList();
-        this.guestListViewer = new GuestListViewer(guestList);
-        this.mainViewer = new Main(this);
+        this.mainView = new MainView(this);
+        this.guestListView = new GuestListView(guestList, mainView);
+        this.addGuestView = new AddGuestView(guestList, mainView);
     }
 
     public static void main(String[] args) {
