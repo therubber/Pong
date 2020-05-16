@@ -30,6 +30,7 @@ public class GuestListViewer extends JFrame {
             i++;
         }
 
-        setSize(500, 200);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(500, 300);
     }
 }
