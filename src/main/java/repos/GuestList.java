@@ -47,7 +47,7 @@ public class GuestList {
      *
      * @return new or loaded ArrayList of guests
      */
-    private List<Guest> load() {
+    public List<Guest> load() {
         StringBuilder sb = new StringBuilder();
         boolean saveFileExists = false;
 

@@ -10,9 +10,9 @@ import java.util.Scanner;
 
 public class TerminalController {
 
-    private final GuestList guestList;
+    public final GuestList guestList;
     public final MainView mainView;
-    public final GuestListView guestListView;
+    public GuestListView guestListView; // Non-final -> reassigned when a new guest is added to the list
     public final AddGuestView addGuestView;
     Scanner scanner = new Scanner(System.in);
     String command = "menu";

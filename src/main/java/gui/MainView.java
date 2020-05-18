@@ -1,6 +1,8 @@
 package gui;
 
 import controller.TerminalController;
+import entities.Guest;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -52,6 +54,7 @@ public class MainView extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            controller.guestListView = new GuestListView(controller.guestList, controller.mainView);
             controller.guestListView.setVisible(true);
             mainView.setVisible(false);
         }
