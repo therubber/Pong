@@ -50,8 +50,13 @@ public class AddGuestView extends JFrame {
 
         public void actionPerformed(ActionEvent e) {
             if(!firstnameField.getText().equals("") && !lastnameField.getText().equals("")) {
+
                 guestList.add(new Guest(firstnameField.getText(), lastnameField.getText(), hasPaidCheck.isSelected()));
                 guestList.save();
+
+                firstnameField.setText("");
+                lastnameField.setText("");
+                hasPaidCheck.setSelected(false);
             }
         }
     }

@@ -13,7 +13,7 @@ import java.util.Objects;
 public class GuestList {
 
     public List<Guest> list;
-    private Gson gson;
+    private final Gson gson;
 
     public GuestList() {
         this.gson = new Gson();

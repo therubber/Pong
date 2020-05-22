@@ -21,7 +21,7 @@ public class GuestListView extends JFrame {
 
         add(navigation);
 
-        JPanel guestListPanel = new GuestListPanel(guestList);
+        JScrollPane guestListPanel = new JScrollPane(new GuestListPanel(guestList));
 
         add(guestListPanel);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
