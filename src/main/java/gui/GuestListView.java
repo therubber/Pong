@@ -1,5 +1,6 @@
 package gui;
 
+import entities.Config;
 import repos.GuestList;
 import javax.swing.*;
 import java.awt.*;
@@ -7,9 +8,8 @@ import java.awt.*;
 public class GuestListView extends JFrame {
 
     public GuestListView(GuestList guestList, MainView mainView) {
-        
+
         setLayout(new GridLayout(2, 1));
-        setSize(500, 500);
 
         JPanel navigation = new JPanel(new GridLayout(3, 1));
 
@@ -21,9 +21,11 @@ public class GuestListView extends JFrame {
 
         add(navigation);
 
-        JScrollPane guestListPanel = new JScrollPane(new GuestListPanel(guestList));
+        JScrollPane guestListPanel = new JScrollPane(new GuestListPanel(guestList, false));
 
         add(guestListPanel);
+
+        setSize(Config.SCREEN_SIZE); // Sets window size to Fullscreen
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 }

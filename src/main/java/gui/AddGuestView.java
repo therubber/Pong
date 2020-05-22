@@ -1,5 +1,6 @@
 package gui;
 
+import entities.Config;
 import entities.Guest;
 import repos.GuestList;
 
@@ -15,7 +16,6 @@ public class AddGuestView extends JFrame {
     private JCheckBox hasPaidCheck;
 
     public AddGuestView(GuestList guestList, MainView mainView) {
-        setSize(500, 300);
 
         setLayout(new GridLayout(3, 1));
 
@@ -37,6 +37,7 @@ public class AddGuestView extends JFrame {
         add(form);
         add(submit);
 
+        setSize(Config.SCREEN_SIZE);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
 

@@ -1,7 +1,7 @@
 package gui;
 
 import controller.TerminalController;
-import entities.Guest;
+import entities.Config;
 
 import javax.swing.*;
 import java.awt.*;
@@ -26,18 +26,18 @@ public class MainView extends JFrame {
         add(guestListButton);
 
         JButton addGuestsButton = new JButton("Add Guests");
-        addGuestsButton.addActionListener(new AddGuestListener(this));
+        addGuestsButton.addActionListener(new AddGuestViewListener(this));
         add(addGuestsButton);
 
         JButton markPaidButton = new JButton("Mark guests as paid");
+        markPaidButton.addActionListener(new MarkPaidViewListener(this));
         add(markPaidButton);
 
         JButton tournamentButton = new JButton("Tournament");
         add(tournamentButton);
 
-
+        setSize(Config.SCREEN_SIZE); // Sets window size to fullscreen
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(500, 500);
         setVisible(true);
     }
 
@@ -60,16 +60,37 @@ public class MainView extends JFrame {
         }
     }
 
-    private class AddGuestListener implements ActionListener {
+    /**
+     * ActionListener to get to get to a view where you can add new guests to the list
+     */
+    private class AddGuestViewListener implements ActionListener {
 
         private final MainView mainView;
 
-        public AddGuestListener(MainView mainView) {
+        public AddGuestViewListener(MainView mainView) {
             this.mainView = mainView;
         }
 
         public void actionPerformed(ActionEvent e) {
             controller.addGuestView.setVisible(true);
+            mainView.setVisible(false);
+        }
+    }
+
+    /**
+     * ActionListener to get to a view where guests can be marked to have paid the entrance fee
+     */
+    private class MarkPaidViewListener implements ActionListener {
+
+        private MainView mainView;
+
+        public MarkPaidViewListener(MainView mainView) {
+            this.mainView = mainView;
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            controller.markPaidView = new MarkPaidView(controller.guestList, mainView);
+            controller.markPaidView.setVisible(true);
             mainView.setVisible(false);
         }
     }
