@@ -1,9 +1,6 @@
 package controller;
 
-import gui.AddGuestView;
-import gui.GuestListView;
-import gui.MainView;
-import gui.MarkPaidView;
+import gui.*;
 import repos.GuestList;
 
 public class TerminalController {
@@ -13,6 +10,7 @@ public class TerminalController {
     public GuestListView guestListView; // Non-final -> reassigned when a new guest is added to the list
     public final AddGuestView addGuestView;
     public MarkPaidView markPaidView; // Non-final -> reassigned when a new guest is added to the list
+    public TournamentView tournamentView;
 
     public TerminalController() {
         this.guestList = new GuestList();
@@ -20,6 +18,7 @@ public class TerminalController {
         this.guestListView = new GuestListView(guestList, mainView);
         this.addGuestView = new AddGuestView(guestList, mainView);
         this.markPaidView = new MarkPaidView(guestList, mainView);
+        this.tournamentView = new TournamentView(guestList, mainView);
     }
 
     public static void main(String[] args) {

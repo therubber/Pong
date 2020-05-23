@@ -10,12 +10,13 @@ public class BackButton extends JButton {
     public BackButton(MainView mainView, JFrame currentView) {
         super("Back");
         addActionListener(new BackListener(mainView, currentView));
+        setToolTipText("Go back to last window");
     }
 
     public class BackListener implements ActionListener {
 
-        private MainView mainView;
-        private JFrame currentView;
+        private final MainView mainView;
+        private final JFrame currentView;
 
         public BackListener(MainView mainView, JFrame jFrame) {
             this.mainView = mainView;
