@@ -19,7 +19,7 @@ public class AddGuestView extends JFrame {
 
         setLayout(new GridLayout(3, 1));
 
-        add(new BackButton(mainView, this));
+        add(new NavigationBar(mainView, this));
 
         JPanel form = new JPanel(new GridLayout(1, 4));
 

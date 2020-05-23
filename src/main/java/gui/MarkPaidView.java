@@ -12,7 +12,7 @@ public class MarkPaidView extends JFrame {
 
         setLayout(new GridLayout(2, 1));
 
-        add(new BackButton(mainView, this));
+        add(new NavigationBar(mainView, this));
 
         JPanel main = new JPanel();
         main.add(new GuestListPanel(guestList, true));

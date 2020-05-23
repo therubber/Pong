@@ -9,10 +9,12 @@ import java.awt.*;
 public class TournamentView extends JFrame {
 
     public TournamentView(GuestList guestList, MainView mainView) {
-        setLayout(new GridLayout(2, 1));
+        setLayout(new GridLayout(3, 1));
 
-        add(new BackButton(mainView, this));
-        add(new GuestListPanel(guestList, false));
+        add(new NavigationBar(mainView, this));
+
+        add(new JButton("View Teams"));
+        add(new JButton("Add Teams"));
 
         setSize(Config.SCREEN_SIZE);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
