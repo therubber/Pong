@@ -11,13 +11,10 @@ public class GuestListView extends JFrame {
 
         setLayout(new GridLayout(2, 1));
 
-        JPanel navigation = new JPanel(new GridLayout(3, 1));
+        JPanel navigation = new JPanel(new GridLayout(2, 1));
 
-        JButton backButton = new JButton("Back");
-        backButton.addActionListener(new BackListener(mainView, this));
         navigation.add(new JPanel()); // Placeholder for Logo in Menu
-        navigation.add(backButton);
-        navigation.add(new JPanel());
+        navigation.add(new BackButton(mainView, this));
 
         add(navigation);
 
