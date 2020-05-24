@@ -16,6 +16,16 @@ public class NavigationBar extends JPanel {
 
         add(new BackButton(mainView, currentView));
 
+        placeLogo();
+
+        add(new JPanel());
+    }
+
+    public NavigationBar() {
+        placeLogo();
+    }
+
+    private void placeLogo() {
         try {
             BufferedImage image = ImageIO.read(Config.LOGO_FILE);
             ImageIcon logo = new ImageIcon(image);
@@ -25,7 +35,5 @@ public class NavigationBar extends JPanel {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        add(new JPanel());
     }
 }

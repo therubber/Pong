@@ -34,7 +34,7 @@ public class GuestList {
      */
     public void save() {
         try {
-            FileWriter writer = new FileWriter(Config.guestSaveFile);
+            BufferedWriter writer = new BufferedWriter(new FileWriter(Config.guestSaveFile));
             writer.write(gson.toJson(list));
             writer.close();
         } catch (IOException e) {

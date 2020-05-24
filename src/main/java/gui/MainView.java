@@ -18,7 +18,9 @@ public class MainView extends JFrame {
     public MainView(TerminalController controller) {
         this.controller = controller;
 
-        setLayout(new GridLayout(4, 1));
+        setLayout(new GridLayout(5, 1));
+
+        add(new NavigationBar());
 
         JButton guestListButton = new JButton("Guest list");
         guestListButton.addActionListener(new NavigationListener(this, "GUESTLIST"));
