@@ -1,6 +1,7 @@
 package gui;
 
 import entities.Config;
+import gui.frames.MainView;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

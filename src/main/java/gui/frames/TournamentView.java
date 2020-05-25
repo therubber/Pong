@@ -1,6 +1,7 @@
-package gui;
+package gui.frames;
 
 import entities.Config;
+import gui.NavigationBar;
 import repos.GuestList;
 
 import javax.swing.*;

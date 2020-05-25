@@ -1,7 +1,9 @@
-package gui;
+package gui.frames;
 
 import controller.TerminalController;
 import entities.Config;
+import gui.NavigationBar;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

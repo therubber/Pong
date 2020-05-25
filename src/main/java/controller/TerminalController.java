@@ -1,6 +1,6 @@
 package controller;
 
-import gui.*;
+import gui.frames.*;
 import repos.GuestList;
 
 public class TerminalController {
