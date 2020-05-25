@@ -22,7 +22,7 @@ class GuestListTest {
 
     @Test
     void add() {
-        Guest guest = new Guest("Jay", "Unit", true);
+        Guest guest = new Guest("Jay", "Unit", true, false);
         guestList.add(guest);
 
         assertTrue(guestList.list.contains(guest));

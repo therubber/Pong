@@ -15,26 +15,38 @@ public class GuestListPanel extends JPanel {
 
         this.guestList = guestList;
 
-        setLayout(new GridLayout(guestList.list.size() + 1, 1));
+        setLayout(new GridLayout(guestList.list.size() + 2, 1));
 
-        JPanel description = new JPanel(new GridLayout(1, 4));
+        JPanel description = new JPanel(new GridLayout(1, 5));
         description.add(new JLabel("No."));
         description.add(new JLabel("Firstname"));
         description.add(new JLabel("Lastname"));
         description.add(new JLabel("Paid"));
+        description.add(new JLabel("BeerPong"));
         add(description);
 
         int i = 1;
         for(Guest guest : guestList.list) {
-            JPanel panel = new JPanel(new GridLayout(1, 4));
+            JPanel panel = new JPanel(new GridLayout(1, 5));
             panel.add(new JLabel(Integer.toString(i)));
             panel.add(new JLabel(guest.firstname));
             panel.add(new JLabel(guest.lastname));
 
             if(advanced) {
-                panel.add(new MarkPaidButton(guest));
+                panel.add(new PaymentStatusCheckBox(guest));
+                panel.add(new ParticipationCheckBox(guest));
             } else {
-                panel.add(new JLabel(Boolean.toString(guest.hasPaid)));
+                JCheckBox hasPaidCheckBox = new JCheckBox();
+                hasPaidCheckBox.setSelected(guest.hasPaid);
+                hasPaidCheckBox.setEnabled(false);
+                panel.add(hasPaidCheckBox);
+
+                JCheckBox beerPong = new JCheckBox();
+                beerPong.setEnabled(false);
+                if(guest.isParticipant()) {
+                    beerPong.setSelected(true);
+                }
+                panel.add(beerPong);
             }
 
             add(panel);
@@ -42,24 +54,46 @@ public class GuestListPanel extends JPanel {
         }
     }
 
-    private class MarkPaidButton extends JButton {
+    private class PaymentStatusCheckBox extends JCheckBox {
 
         private final Guest guest;
 
-        public MarkPaidButton(Guest guest) {
+        public PaymentStatusCheckBox(Guest guest) {
             this.guest = guest;
-            if(!guest.hasPaid) {
-                this.setText("Mark as paid");
-            } else {
-                this.setText("Mark as not paid");
-            }
             this.addActionListener(new MarkPaidListener());
+
+            if(guest.hasPaid) {
+                setSelected(true);
+            }
         }
 
         private class MarkPaidListener implements ActionListener {
 
+            @Override
             public void actionPerformed(ActionEvent e) {
-                guest.hasPaid = !guest.hasPaid;
+                guest.changePaymentStatus();
+                guestList.save();
+            }
+        }
+    }
+
+    private class ParticipationCheckBox extends JCheckBox {
+
+        private final Guest guest;
+
+        public ParticipationCheckBox(Guest guest) {
+            this.guest = guest;
+            addActionListener(new ParticipantCheckBoxListener());
+
+            if(guest.isParticipant()) {
+                setSelected(true);
+            }
+        }
+
+        private class ParticipantCheckBoxListener implements ActionListener {
+
+            public void actionPerformed(ActionEvent e) {
+                guest.changeParticipation();
                 guestList.save();
             }
         }

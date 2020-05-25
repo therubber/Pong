@@ -11,7 +11,7 @@ class GuestTest {
 
     @BeforeEach
     void setUp() {
-        this.guest = new Guest("Jay", "Unit", true);
+        this.guest = new Guest("Jay", "Unit", true, false);
     }
 
     @Test
@@ -27,5 +27,10 @@ class GuestTest {
     @Test
     void hasPaidField() {
         assertTrue(guest.hasPaid);
+    }
+
+    @Test
+    void isParticipantTest() {
+        assertFalse(guest.isParticipant());
     }
 }

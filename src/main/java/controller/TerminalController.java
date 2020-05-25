@@ -1,6 +1,7 @@
 package controller;
 
 import gui.frames.*;
+import gui.frames.TournamentView;
 import repos.GuestList;
 
 public class TerminalController {
